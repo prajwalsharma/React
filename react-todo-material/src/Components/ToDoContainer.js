@@ -24,88 +24,74 @@ import AddIcon from "@material-ui/icons/Add";
 import ImageIcon from "@material-ui/icons/Image";
 import WorkIcon from "@material-ui/icons/Work";
 import BeachAccessIcon from "@material-ui/icons/BeachAccess";
+import ToDoForm from "./ToDoForm";
+import ToDoList from "./ToDoList";
+import Header from "./Header";
+import Layout from "./Layout";
 
 class ToDoContainer extends Component {
+  // Declare and initialize state
+  state = {
+    todo: "",
+    todos: [],
+  };
+
+  // Save value in input field on change event
+  toDoInputChangeHandler = (event) => {
+    this.setState({
+      todo: event.target.value,
+    });
+  };
+
+  // Add new todo in the todos on button click
+  addToDoHandler = () => {
+    let todo = this.state.todo;
+    let timeStamp = new Date();
+
+    // If input is blank
+    if (todo === "") {
+      return;
+    }
+
+    let newToDo = {
+      id: timeStamp.getTime(),
+      name: todo,
+      createdOn: timeStamp.toLocaleString("en-IN"),
+    };
+
+    let newToDos = [...this.state.todos];
+    newToDos.push(newToDo);
+    this.setState({
+      todo: "",
+      todos: newToDos,
+    });
+  };
+
+  // Delete an existing todo
+  deleteToDoHandler = (event, id) => {
+    let toDos = [...this.state.todos];
+    let newToDos = toDos.filter((todo) => todo.id !== id);
+    this.setState({
+      todos: newToDos,
+    });
+  };
+
   render() {
     return (
       <div>
         <Container maxWidth="sm">
-          <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-          >
-            <AppBar
-              position="static"
-              style={{ padding: "10px", textAlign: "center" }}
-            >
-              <Typography variant="h6">
-                React ToDo App (Material UI) <span>🔥</span>
-              </Typography>
-            </AppBar>
-            <Card style={{ margin: "20px 0 20px 0" }}>
-              <CardMedia
-                component="img"
-                height="140"
-                image="https://images.unsplash.com/photo-1512314889357-e157c22f938d"
-              ></CardMedia>
-              <CardContent>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-around",
-                  }}
-                >
-                  <TextField label="Enter task here..." variant="outlined" />
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    size="large"
-                    startIcon={<AddIcon />}
-                  >
-                    Add
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-            <Card style={{ width: "100%" }}>
-              <CardContent>
-                <List>
-                  <ListItem>
-                    <ListItemAvatar>
-                      <Avatar>
-                        <ImageIcon />
-                      </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-                  </ListItem>
-                  <Divider variant="middle" />
-                  <ListItem>
-                    <ListItemAvatar>
-                      <Avatar>
-                        <WorkIcon />
-                      </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary="Work" secondary="Jan 7, 2014" />
-                  </ListItem>
-                  <Divider variant="middle" />
-                  <ListItem>
-                    <ListItemAvatar>
-                      <Avatar>
-                        <BeachAccessIcon />
-                      </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText
-                      primary="Vacation"
-                      secondary="July 20, 2014"
-                    />
-                  </ListItem>
-                </List>
-              </CardContent>
-            </Card>
-          </Grid>
+          <Layout>
+            <Header />
+            <ToDoForm
+              change={this.toDoInputChangeHandler}
+              click={this.addToDoHandler}
+              name={this.state.todo}
+            />
+            <ToDoList
+              todos={this.state.todos}
+              delete={this.deleteToDoHandler}
+            />
+          </Layout>
         </Container>
       </div>
     );
