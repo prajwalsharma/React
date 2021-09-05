@@ -17,6 +17,13 @@ import PureComp from "./PureComp";
 import ParentComp from "./ParentComp";
 import MemoComp from "./MemoComp";
 import RefsDemo from "./RefsDemo";
+import FocusInput from "./FocusInput";
+import FRParentInput from "./FRParentInput";
+import PortalDemo from "./PortalDemo";
+import Hero from "./Hero";
+import ErrorBoundary from "./ErrorBoundary";
+import ClickCounter from "./ClickCounter";
+import HoverCounter from "./HoverCounter";
 
 const Header = () => {
   return (
@@ -129,6 +136,43 @@ const Header = () => {
       <div className="section">
         <h3>17. Refs</h3>
         <RefsDemo />
+      </div>
+
+      {/* 18. Refs with Class components */}
+      <div className="section">
+        <h3>18. Refs with Class components</h3>
+        <FocusInput />
+      </div>
+
+      {/* 19. Forwarding Refs */}
+      <div className="section">
+        <h3>19. Forwarding Refs in Functional Components</h3>
+        <FRParentInput />
+      </div>
+
+      {/* 20. Portals */}
+      <div className="section">
+        <h3>20. Portals (Render component outside 'root' element)</h3>
+        <p>See the floating button -{">"}</p>
+        <PortalDemo />
+      </div>
+
+      {/* 21. Error Boudary */}
+      <div className="section">
+        <h3>21. Error Boundary</h3>
+        <ErrorBoundary>
+          <Hero heroName="Batman" />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <Hero heroName="Joker" />
+        </ErrorBoundary>
+      </div>
+
+      {/* 22. Higher Order Component (HOC) */}
+      <div className="section">
+        <h3>22. Higher Order Component (HOC) - To reduce code duplicality</h3>
+        <ClickCounter name="Batman" />
+        <HoverCounter name="Superman" />
       </div>
     </header>
   );

@@ -30,6 +30,20 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
+
+      #portalroot{
+        position: fixed;
+        width: 80px;
+        background-color: #8bc34a;
+        bottom: 15px;
+        right: 15px;
+        border-radius: 50%;
+        padding: 10px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     </style>
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>React App</title>
@@ -41,5 +55,6 @@
         <div class="loader"></div>
       </div>
     </div>
+    <div id="portalroot"></div>
   </body>
 </html>
