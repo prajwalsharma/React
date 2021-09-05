@@ -11,6 +11,12 @@ import ParentComponent from "./ParentComponent";
 import UserGreeting from "./UserGreeting";
 import NameList from "./NameList";
 import Stylesheet from "./Stylesheet";
+import Form from "./Form";
+import FragmentDemo from "./FragmentDemo";
+import PureComp from "./PureComp";
+import ParentComp from "./ParentComp";
+import MemoComp from "./MemoComp";
+import RefsDemo from "./RefsDemo";
 
 const Header = () => {
   return (
@@ -93,6 +99,36 @@ const Header = () => {
       <div className="section">
         <h3>12. Styling & CSS</h3>
         <Stylesheet stylename="primary" />
+      </div>
+
+      {/* 13. Form Handling (Basics) */}
+      <div className="section">
+        <h3>13. Form Handling (Basics)</h3>
+        <Form />
+      </div>
+
+      {/* 14. React Framgments */}
+      <div className="section">
+        <h3>14. React Framgments</h3>
+        <FragmentDemo />
+      </div>
+
+      {/* 15. Pure Components (Class Components) */}
+      <div className="section">
+        <h3>15. Pure Components (Class Components only)</h3>
+        <ParentComp />
+      </div>
+
+      {/* 16. Memo Components (Pure Component for Functional Components) */}
+      <div className="section">
+        <h3>16. Memo Components (Pure Component for Functional Components)</h3>
+        <ParentComp />
+      </div>
+
+      {/* 17. Refs */}
+      <div className="section">
+        <h3>17. Refs</h3>
+        <RefsDemo />
       </div>
     </header>
   );
