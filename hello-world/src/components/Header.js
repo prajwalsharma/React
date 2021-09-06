@@ -24,6 +24,10 @@ import Hero from "./Hero";
 import ErrorBoundary from "./ErrorBoundary";
 import ClickCounter from "./ClickCounter";
 import HoverCounter from "./HoverCounter";
+import ComponentC from "./ComponentC";
+import { UserProvider } from "./userContext";
+import PostList from "./PostList";
+import PostForm from "./PostForm";
 
 const Header = () => {
   return (
@@ -173,6 +177,32 @@ const Header = () => {
         <h3>22. Higher Order Component (HOC) - To reduce code duplicality</h3>
         <ClickCounter name="Batman" />
         <HoverCounter name="Superman" />
+      </div>
+
+      {/* 23. Render Props */}
+      <div className="section">
+        <h3>23. Render Props</h3>
+        <p>To Do</p>
+      </div>
+
+      {/* 24. Context API */}
+      <div className="section">
+        <h3>24. Context API</h3>
+        <UserProvider value="Prajwal">
+          <ComponentC />
+        </UserProvider>
+      </div>
+
+      {/* 25. HTTP, Axios & React - GET */}
+      <div className="section">
+        <h3>25. HTTP, Axios & React - GET</h3>
+        <PostList />
+      </div>
+
+      {/* 26. HTTP, Axios & React - POST */}
+      <div className="section">
+        <h3>26. HTTP, Axios & React - POST</h3>
+        <PostForm />
       </div>
     </header>
   );
